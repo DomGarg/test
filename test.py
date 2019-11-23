@@ -5,7 +5,7 @@ from twilio import twiml
 app = Flask(__name__)
 
 @app.route('/')
-def inddex():
+def index():
     return '<h1>Deployed to heroku baby</h1>'
 
 @app.route('/sms', methods=['POST'])
