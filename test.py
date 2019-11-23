@@ -4,6 +4,9 @@ from twilio import twiml
 
 app = Flask(__name__)
 
+@app.route('/')
+def inddex():
+    return '<h1>Deployed to heroku baby</h1>'
 
 @app.route('/sms', methods=['POST'])
 def sms():
@@ -13,6 +16,3 @@ def sms():
     resp = twiml.Response()
     resp.message('Hello {}, you said: {}'.format(number, message_body))
     return str(resp)
-
-if __name__ == '__main__':
-    app.run()
