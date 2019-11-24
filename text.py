@@ -67,6 +67,7 @@ def sms():
     ##Company has sent a text message
     for i in userForms.Companies:
         print("First Loop: ", i)
+        print("elements: ", userForms.Companies.get(i))
         temp = userForms.Companies.get(i)
         for j in temp:
             if j.getPhoneNumber() == number:
@@ -81,7 +82,7 @@ def sms():
         ##return str(message.sid)
 
     ##then this message is from a client and check if they have already messaged us!
-    if(number not in clientRequests):
+    if(number != lastClientRequest):
         print("NUMBER: ", number)
         print("ClientRequests: ", clientRequests)
         lastClientRequest = number
