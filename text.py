@@ -78,7 +78,7 @@ def sms():
         message = client.messages.create(body=startingMessage, from_='+16475576348', to= lastClientRequest)
         return str(message.sid)
 
-    clientRequest.pop(number)
+    clientRequests.pop(number)
 
     lastClientRequest = None
     compare = linkSkills.get(message_body)
