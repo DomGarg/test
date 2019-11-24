@@ -124,7 +124,7 @@ def sms():
         print("NUMBER: ", number)
         message = client.messages.create(body=startingMessage, from_='+16475576348', to= number)
         return str(message.sid)
-    count += 1
+    
     if companiesPresent == 0:
         message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=lastClientRequest)
 
