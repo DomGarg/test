@@ -21,6 +21,7 @@ class Company(object):
         temp = Companies.pop(skills)
         temp.append(self)
         Companies.update({skills:temp})
+        self.skills = skills
         self.phoneNumber = phoneNumber
         self.email = emailAddress
         self.info = companyInfo
@@ -44,6 +45,16 @@ class Company(object):
     ##Returns info about the Company associated with this object
     def getInfo(self):
         return self.companyInfo
+
+    ##Getter method
+    ##Returns skills about the Company associated with this object
+    def getSkills(self):
+        return self.skills
+
+    ##Setter method
+    ##Changes the skills of the Company associated with this object with the one passed through param
+    def setSkills(self, newSkills):
+        self.skills = newSkills
 
     ##Setter method
     ##Changes the name of the Company associated with this object with the one passed through param
