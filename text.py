@@ -17,7 +17,7 @@ startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quo
                 '\nAnd remember the more details that you include... the better the estimate you will receive from our connected construction specialists!!\n' \
                 '\nExample:' \
                 '\n------------------------\n'\
-                '------TEXT--MESSAGE----'\
+                '----TEXT--MESSAGE----'\
                 '\n------------------------\n'\
                 '1\n' \
                 'PERSONALMESSAGE\n' \
@@ -90,7 +90,7 @@ def sms():
     number = request.form['From']
     original_message_body = request.values.get('Body', None)
     message_body = original_message_body.split("\n", 1)
-    found = 0
+
     ##Company has sent a text message
     for i in userForms.Companies:
         #print("First Loop: ", i)
@@ -109,6 +109,7 @@ def sms():
         ##return str(message.sid)
     companiesPresent = 0
     if(str(number) in clientRequests):
+        print("HERE")
         compare = linkSkills.get(str(original_message_body))
         print("Compare: ", compare)
         list = userForms.Companies.get(compare)
@@ -117,10 +118,11 @@ def sms():
                 companiesPresent += 1
                 message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
                 print(message.sid)
-        clientRequests.pop(number)
+        clientRequests.pop(str(number))
 
     ##then this message is from a client and check if they have already messaged us!
     else:
+        print("THERE")
         print("NUMBER: ", number)
         print("ClientRequests: ", clientRequests)
         sendBaseMessage += 1
