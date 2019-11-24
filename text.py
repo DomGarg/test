@@ -109,8 +109,8 @@ def sms():
         ##return str(message.sid)
     companiesPresent = 0
     if(str(number) in clientRequests):
-        print("HERE")
-        compare = linkSkills.get(str(original_message_body))
+        print("HERE: ", original_message_body )
+        compare = linkSkills.get(str(original_message_body[0]))
         print("Compare: ", compare)
         list = userForms.Companies.get(compare)
         for j in list:
