@@ -15,5 +15,5 @@ def sms():
     message_body = request.form['Body']
 
     resp = MessagingResponse()
-    resp.message('Hello {}, you said: {}'.format(number, message_body))
+    resp.message('Hello {}, you said: {}'.format("+19056060506", message_body))
     return str(resp)
