@@ -98,7 +98,7 @@ def sms():
         temp = userForms.Companies.get(i)
         for j in temp:
             if j.getPhoneNumber() == number:
-                message = client.messages.create(body=original_message_body, from_='+16475576348', to= lastClientRequest)
+                message = client.messages.create(body=original_message_body, from_='+16475576348', to= number)
                 return str(message.sid)
 
     sendBaseMessage = 0
@@ -107,11 +107,10 @@ def sms():
     ##if(message_body[0] not in linkSkills and  not in clientRequests):
     ##message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
         ##return str(message.sid)
-
+    companiesPresent = 0
     if(str(number) in clientRequests):
         compare = linkSkills.get(str(original_message_body))
         print("Compare: ", compare)
-        companiesPresent = 0
         list = userForms.Companies.get(compare)
         for j in list:
             if j.getSkills() == compare:
