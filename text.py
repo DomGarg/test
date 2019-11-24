@@ -62,7 +62,8 @@ def sms():
     original_message_body = request.values.get('Body', None)
     message_body = original_message_body.split("\n", 1)
     found = 0
-
+    print(number)
+    print(original_message_body)
     ##Company has sent a text message
     for i in userForms.Companies:
         temp = userForms.Companies.get(i)
