@@ -17,10 +17,10 @@ def index():
 @app.route('/sms', methods=['POST', 'GET'])
 def sms():
     number = request.form['From']
-    message_body = request.values.get('Body', None).split(" ", 1)
+    message_body = request.values.get('Body', None).split("\n", 1)
     #message_body.split(" ", 1)
     #resp = MessagingResponse()
     #resp.message('Hello {}, you said: {}'.format("+19056060506", message_body[0]))
     message = client.messages.create(body=message_body, from_='+16475576348', to='+19056060506')
     print(message.sid)
-    #return str(resp)
+    return str(message)
