@@ -62,7 +62,7 @@ def sms():
     original_message_body = request.values.get('Body', None)
     message_body = original_message_body.split("\n", 1)
     found = 0
-    print(number)
+    print("Split up: ", message_body)
     print(original_message_body)
     ##Company has sent a text message
     for i in userForms.Companies:
@@ -75,7 +75,7 @@ def sms():
     sendBaseMessage = 0
 
     ##Message was entered incorrectly by customer
-    if(message_body[0] not in linkSkills):
+    if(message_body[0] not in linkSkills and not in clientRequests):
         message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
         return str(message.sid)
 
