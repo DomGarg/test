@@ -77,7 +77,6 @@ def sms():
         message = client.messages.create(body=startingMessage, from_='+16475576348', to= lastClientRequest)
         return str(message.sid)
 
-    lastClientRequest = None
     compare = linkSkills.get(message_body[0])
 
     companiesPresent = 0
@@ -89,7 +88,7 @@ def sms():
             print(message.sid)
 
     if companiesPresent == 0:
-        message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=lastClientRewuest)
+        message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=lastClientRequest)
 
     #resp = MessagingResponse()
     #resp.message('Hello {}, you said: {}'.format("+19056060506", message_body[0]))
