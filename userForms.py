@@ -7,7 +7,7 @@
 Companies = {"Painter":[], "Roofer":[], "Welder":[], "Mechanic":[], "Plaster":[], "Carpentry": [], "Drywall": [], "Electrician": [], "Plumber": [], "Taping": [], "Masonry": [], "Tiles":[], "Carpet Installer": [], "Cement & Concrete Finisher": [], "Fencer/Fence Erector": [], "Flooring Installer":[], "HVAC":[], "Insulation": [], "Laborer": [], "Landscaper":[], "Mason":[]}
 
 
-class Company(object):
+class Company:
     ##Constructor for Company User form
     ##Will contain all important information about the Company
     ##All companies will be stored in a dictionary outlining there skills (what trades they speicalize in)
@@ -17,10 +17,7 @@ class Company(object):
         ##Update our dictionay of Companies associated with particular skills
         ##Go through the skill(s) the company provided us with and add this Company to each skill they speicliaze within our dictionary
         ##This will be used to reference specific companies when receiving Customer renovation requests
-        
-        temp = Companies.pop(skills)
-        temp.append(self)
-        Companies.update({skills:temp})
+        self.skills = skills
         self.phoneNumber = phoneNumber
         self.email = emailAddress
         self.info = companyInfo
@@ -44,6 +41,16 @@ class Company(object):
     ##Returns info about the Company associated with this object
     def getInfo(self):
         return self.companyInfo
+
+    ##Getter method
+    ##Returns skills about the Company associated with this object
+    def getSkills(self):
+        return self.skills
+
+    ##Setter method
+    ##Changes the skills of the Company associated with this object with the one passed through param
+    def setSkills(self, newSkills):
+        self.skills = newSkills
 
     ##Setter method
     ##Changes the name of the Company associated with this object with the one passed through param
