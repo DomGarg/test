@@ -81,7 +81,7 @@ def sms():
     clientRequests.pop(number)
 
     lastClientRequest = None
-    compare = linkSkills.get(message_body)
+    compare = linkSkills.get(message_body[0])
 
     companiesPresent = 0
     for i in userForms.Companies:
