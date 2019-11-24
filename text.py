@@ -122,7 +122,6 @@ def sms():
     else:
         print("THERE")
         print("NUMBER: ", number)
-        print("ClientRequests: ", clientRequests)
         message = client.messages.create(body=startingMessage, from_='+16475576348', to= number)
         return str(message.sid)
     count += 1
