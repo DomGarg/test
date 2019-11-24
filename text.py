@@ -63,10 +63,10 @@ def sms():
     original_message_body = request.values.get('Body', None)
     message_body = original_message_body.split("\n", 1)
     found = 0
-    print("ClientRequest: ", clientRequests)
 
     ##Company has sent a text message
     for i in userForms.Companies:
+        print("First Loop: ", i)
         temp = userForms.Companies.get(i)
         for j in temp:
             if j.getPhoneNumber() == number:
@@ -91,9 +91,10 @@ def sms():
         return str(message.sid)
 
     compare = linkSkills.get(original_message_body)
-
+    print("Compare: ", compare)
     companiesPresent = 0
     list = userForms.Companies.get(compare)
+
     for j in list:
         clientRequests.pop(lastClientRequest)
         if j.getSkills() == compare:
