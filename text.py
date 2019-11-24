@@ -97,7 +97,7 @@ def sms():
         temp = userForms.Companies.get(i)
         for j in temp:
             if j.getPhoneNumber() == number:
-                message = client.messages.create(body=original_message_body, from_='+16475576348', to= number)
+                message = client.messages.create(body=original_message_body, from_='+16475576348', to= userForms.interactions[-1])
                 return str(message.sid)
 
 
