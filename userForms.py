@@ -17,10 +17,6 @@ class Company:
         ##Update our dictionay of Companies associated with particular skills
         ##Go through the skill(s) the company provided us with and add this Company to each skill they speicliaze within our dictionary
         ##This will be used to reference specific companies when receiving Customer renovation requests
-        
-        temp = Companies.pop(skills)
-        temp.append(self)
-        Companies.update({skills:temp})
         self.skills = skills
         self.phoneNumber = phoneNumber
         self.email = emailAddress
