@@ -17,15 +17,10 @@ class Company(object):
         ##Update our dictionay of Companies associated with particular skills
         ##Go through the skill(s) the company provided us with and add this Company to each skill they speicliaze within our dictionary
         ##This will be used to reference specific companies when receiving Customer renovation requests
-        if isinstance(skills, list):
-            for i in skills:
-                temp = Companies.pop(i)
-                temp.append(self)
-                Companies.update({i:temp})
-        else:
-            temp = Companies.pop(skills)
-            temp.append(self)
-            Companies.update({skills:temp})
+        
+        temp = Companies.pop(skills)
+        temp.append(self)
+        Companies.update({skills:temp})
         self.phoneNumber = phoneNumber
         self.email = emailAddress
         self.info = companyInfo

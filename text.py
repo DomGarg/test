@@ -63,37 +63,33 @@ def sms():
     message_body = original_message_body.split("\n", 1)
     found = 0
     for i in userForms.Companies:
-        tempList = userForms.Companies.get(i)
-        for j in tempList:
+        temp = userForms.Companies.get(i)
+        for j in temp:
             if j.getPhoneNumber() == number:
                 message = client.messages.create(body=original_message_body, from_='+16475576348', to= lastClientRequest)
                 return str(message.sid)
 
     sendBaseMessage = 0
     ##then this message is from a client and check if they have already messaged us!
-    if(number not in clientRequests):
+    if(number not in clientRequests and sendBaseMessage % 2 != 1):
         lastClientRequest = number
         sendBaseMessage += 1
         clientRequests.update({number: sendBaseMessage})
         message = client.messages.create(body=startingMessage, from_='+16475576348', to= lastClientRequest)
         return str(message.sid)
 
-    clientRequests.pop(number)
-
-    lastClientRequest = None
     compare = linkSkills.get(message_body[0])
 
     companiesPresent = 0
-    for i in userForms.Companies:
-        tempList = userForms.Companies.get(i)
-        for j in tempList:
-            if j.getSkills() == compare:
-                companiesPresent += 1
-                message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
-                print(message.sid)
+    list = userForms.Companies.get(compare)
+    for j in list:
+        if j.getSkills() == compare:
+            companiesPresent += 1
+            message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
+            print(message.sid)
 
     if companiesPresent == 0:
-        message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=number)
+        message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=lastClientRequest)
 
     #resp = MessagingResponse()
     #resp.message('Hello {}, you said: {}'.format("+19056060506", message_body[0]))
