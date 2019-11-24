@@ -16,7 +16,7 @@ startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quo
                   '\nAnd remember the more details that you include... the better the estimate you will receive from our connected construction specialists!!\n' \
                   '\nExample:' \
                   '\n------------------------\n'\
-                  '----------TEXT--------------------------MESSAGE-------'\
+                  '--------TEXT--------------------MESSAGE-------'\
                   '\n------------------------\n'\
                   '1\n' \
                   'PERSONALMESSAGE\n' \
@@ -65,8 +65,8 @@ def sms():
     for i in userForms.Companies:
         tempList = userForms.Companies.get(i)
         for j in tempList:
-            if j.getPhoneNumber() == message_body:
-                message = client.messages.create(body=original_message_body, from_=i.getPhoneNumber(), to= lastClientRequest)
+            if j.getPhoneNumber() == number:
+                message = client.messages.create(body=original_message_body, from_='+16475576348', to= lastClientRequest)
                 return str(message.sid)
 
     sendBaseMessage = 0
