@@ -17,7 +17,7 @@ def index():
 @app.route('/sms', methods=['POST', 'GET'])
 def sms():
     number = request.form['From']
-    message_body = request.form['Body']
+    message_body = str(request.form['Body'])
     message_body.split(" ", 1)
     #resp = MessagingResponse()
     #resp.message('Hello {}, you said: {}'.format("+19056060506", message_body[0]))
