@@ -17,7 +17,7 @@ startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quo
                 '\nAnd remember the more details that you include... the better the estimate you will receive from our connected construction specialists!!\n' \
                 '\nExample:' \
                 '\n------------------------\n'\
-                '---------TEXT--MESSAGE----'\
+                '------TEXT--MESSAGE----'\
                 '\n------------------------\n'\
                 '1\n' \
                 'PERSONALMESSAGE\n' \
@@ -108,25 +108,26 @@ def sms():
     ##message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
         ##return str(message.sid)
 
+    if(number in clientRequests):
+        compare = linkSkills.get(original_message_body)
+        print("Compare: ", compare)
+        companiesPresent = 0
+        list = userForms.Companies.get(compare)
+        for j in list:
+            if j.getSkills() == compare:
+                companiesPresent += 1
+                message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
+                print(message.sid)
+        clientRequests.pop(number)
+
     ##then this message is from a client and check if they have already messaged us!
-    if(not number in clientRequests):
+    else:
         print("NUMBER: ", number)
         print("ClientRequests: ", clientRequests)
         sendBaseMessage += 1
         clientRequests.update({number: sendBaseMessage})
         message = client.messages.create(body=startingMessage, from_='+16475576348', to= number)
         return str(message.sid)
-
-    compare = linkSkills.get(original_message_body)
-    print("Compare: ", compare)
-    companiesPresent = 0
-    list = userForms.Companies.get(compare)
-
-    for j in list:
-        if j.getSkills() == compare:
-            companiesPresent += 1
-            message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
-            print(message.sid)
 
     if companiesPresent == 0:
         message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=lastClientRequest)
