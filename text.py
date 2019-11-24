@@ -89,7 +89,8 @@ def sms():
     number = request.form['From']
     original_message_body = request.values.get('Body', None)
     message_body = original_message_body.split("\n", 1)
-
+    print("Original: " ,message_body)
+    print("part original: ", message_body[0])
     ##Company has sent a text message
     for i in userForms.Companies:
         #print("First Loop: ", i)
@@ -106,7 +107,7 @@ def sms():
     ##message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
         ##return str(message.sid)
     companiesPresent = 0
-    if(number in clients and original_message_body.isnum()):
+    if(number in clients and original_message_body[0].isnum()):
         print("HERE: ", original_message_body )
         compare = linkSkills.get(str(original_message_body[0]))
         print("Compare: ", compare)
