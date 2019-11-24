@@ -7,7 +7,7 @@
 Companies = {"Painter":[], "Roofer":[], "Welder":[], "Mechanic":[], "Plaster":[], "Carpentry": [], "Drywall": [], "Electrician": [], "Plumber": [], "Taping": [], "Masonry": [], "Tiles":[], "Carpet Installer": [], "Cement & Concrete Finisher": [], "Fencer/Fence Erector": [], "Flooring Installer":[], "HVAC":[], "Insulation": [], "Laborer": [], "Landscaper":[], "Mason":[]}
 
 
-class Company:
+class Company(object):
     ##Constructor for Company User form
     ##Will contain all important information about the Company
     ##All companies will be stored in a dictionary outlining there skills (what trades they speicalize in)
@@ -17,6 +17,10 @@ class Company:
         ##Update our dictionay of Companies associated with particular skills
         ##Go through the skill(s) the company provided us with and add this Company to each skill they speicliaze within our dictionary
         ##This will be used to reference specific companies when receiving Customer renovation requests
+        
+        temp = Companies.pop(skills)
+        temp.append(self)
+        Companies.update({skills:temp})
         self.skills = skills
         self.phoneNumber = phoneNumber
         self.email = emailAddress
