@@ -101,7 +101,6 @@ def sms():
                 message = client.messages.create(body=original_message_body, from_='+16475576348', to= number)
                 return str(message.sid)
 
-    sendBaseMessage = 0
 
     ##Message was entered incorrectly by customer
     ##if(message_body[0] not in linkSkills and  not in clientRequests):
@@ -118,15 +117,12 @@ def sms():
                 companiesPresent += 1
                 message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
                 print(message.sid)
-        clientRequests.pop(str(number))
 
     ##then this message is from a client and check if they have already messaged us!
     else:
         print("THERE")
         print("NUMBER: ", number)
         print("ClientRequests: ", clientRequests)
-        sendBaseMessage += 1
-        clientRequests.update({str(number): sendBaseMessage})
         message = client.messages.create(body=startingMessage, from_='+16475576348', to= number)
         return str(message.sid)
     count += 1
