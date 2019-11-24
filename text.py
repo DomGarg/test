@@ -4,8 +4,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 import userForms
 import requests
-
-count = 0
+clients = []
 startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quotes for your desired home project is just seconds away!\n' \
                 'Please follow the following format so that we can properly process your message:\n' \
                 '\n------------------------'\
@@ -107,11 +106,12 @@ def sms():
     ##message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
         ##return str(message.sid)
     companiesPresent = 0
-    if(count % 2 == 1):
+    if(not number in clients || not original_message_body.isnum()):
         print("HERE: ", original_message_body )
         compare = linkSkills.get(str(original_message_body[0]))
         print("Compare: ", compare)
         list = userForms.Companies.get(compare)
+        clients.append(number)
         for j in list:
             if j.getSkills() == compare:
                 companiesPresent += 1
