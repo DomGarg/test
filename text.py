@@ -63,7 +63,8 @@ def sms():
     message_body = original_message_body.split("\n", 1)
     found = 0
     for i in userForms.Companies:
-        for j in i:
+        temp = userForms.Companies.get(i)
+        for j in temp:
             if j.getPhoneNumber() == number:
                 message = client.messages.create(body=original_message_body, from_='+16475576348', to= lastClientRequest)
                 return str(message.sid)
