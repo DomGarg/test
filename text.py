@@ -76,7 +76,7 @@ def sms():
     compare = linkSkills.get(message_body)
     for i in userForms.Companies:
         tempList = userForms.Companies.get(i)
-        for j in tempList
+        for j in tempList:
             if j.getSkills() == compare:
                 message = client.messages.create(body=compare, from_='+16475576348', to='+19056060506')
                 print(message.sid)
