@@ -5,7 +5,7 @@
 # The core projects were created by Dominic Gargala, Adrian Kalafut, and Elizabeth Lenkic
 
 Companies = {"Painter":[], "Roofer":[], "Welder":[], "Mechanic":[], "Plaster":[], "Carpentry": [], "Drywall": [], "Electrician": [], "Plumber": [], "Taping": [], "Masonry": [], "Tiles":[], "Carpet Installer": [], "Cement & Concrete Finisher": [], "Fencer/Fence Erector": [], "Flooring Installer":[], "HVAC":[], "Insulation": [], "Laborer": [], "Landscaper":[], "Mason":[]}
-
+interactions = []
 
 class Company():
     ##Constructor for Company User form
@@ -13,7 +13,6 @@ class Company():
     ##All companies will be stored in a dictionary outlining there skills (what trades they speicalize in)
     def __init__(self, name, skills, phoneNumber, emailAddress, companyInfo):
         self.name = name
-
         ##Update our dictionay of Companies associated with particular skills
         ##Go through the skill(s) the company provided us with and add this Company to each skill they speicliaze within our dictionary
         ##This will be used to reference specific companies when receiving Customer renovation requests
@@ -21,9 +20,6 @@ class Company():
         self.phoneNumber = phoneNumber
         self.email = emailAddress
         self.info = companyInfo
-        temp = Companies.pop(skills)
-        temp.append(self)
-        Companies.update({skills:temp})
 
     ##Getter method
     ##Returns the name of the Company associated with this object
