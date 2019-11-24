@@ -64,10 +64,10 @@ def sms():
     sendBaseMessage = 0
     ##then this message is from a client and check if they have already messaged us!
     if(number not in clientRequests):
-        lastClientRequest = number1
+        lastClientRequest = number
         sendBaseMessage += 1
         clientRequests.update({number: sendBaseMessage})
-        message = client.messages.create(body=startingMessage, from_=i.getPhoneNumber(), to= lastClientRequest)
+        message = client.messages.create(body=startingMessage, from_='+16475576348', to= lastClientRequest)
         return str(message.sid)
 
     clientRequest.pop(number)
