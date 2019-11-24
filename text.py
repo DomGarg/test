@@ -62,6 +62,8 @@ def sms():
     original_message_body = request.values.get('Body', None)
     message_body = original_message_body.split("\n", 1)
     found = 0
+
+    ##Company has sent a text message
     for i in userForms.Companies:
         temp = userForms.Companies.get(i)
         for j in temp:
@@ -70,8 +72,14 @@ def sms():
                 return str(message.sid)
 
     sendBaseMessage = 0
+
+    ##Message was entered incorrectly by customer
+    if(message_body[0] not in linkSkills):
+        message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
+        return str(message.sid)
+
     ##then this message is from a client and check if they have already messaged us!
-    if(number not in clientRequests and sendBaseMessage % 2 != 1):
+    if(number not in clientRequests):
         lastClientRequest = number
         sendBaseMessage += 1
         clientRequests.update({number: sendBaseMessage})
@@ -83,6 +91,7 @@ def sms():
     companiesPresent = 0
     list = userForms.Companies.get(compare)
     for j in list:
+        clientRequests.pop(lastClientRequest)
         if j.getSkills() == compare:
             companiesPresent += 1
             message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
