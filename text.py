@@ -106,6 +106,7 @@ def sms():
         compare = linkSkills.get(str(message_body[0]))
         print("Compare: ", compare)
         list = userForms.Companies.get(compare)
+        print("List: " , list)
         userForms.interactions.append(number)
         for j in list:
             print("Skills: ",j.getSkills())
