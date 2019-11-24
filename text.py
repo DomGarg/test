@@ -75,9 +75,9 @@ def sms():
     sendBaseMessage = 0
 
     ##Message was entered incorrectly by customer
-    if(message_body[0] not in linkSkills and not in clientRequests):
-        message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
-        return str(message.sid)
+    ##if(message_body[0] not in linkSkills and  not in clientRequests):
+        ##message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
+        ##return str(message.sid)
 
     ##then this message is from a client and check if they have already messaged us!
     if(number not in clientRequests):
