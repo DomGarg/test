@@ -74,9 +74,9 @@ def index():
     for i in json_response:
         #temp = json_response[i]
         company = userForms.Company(i[0], i[1][1], "+" + i[1][0], None, None)
-        #temp = userForms.Companies.get(i[1][1])
-        #temp.append(company)
-        #userForms.Companies.update({i[1][1]:temp})
+        temp = userForms.Companies.get(i[1][1])
+        temp.append(company)
+        userForms.Companies.update({i[1][1]:temp})
 
     repository = json_response
     return "<h1>Welcome to heroku app</h1>"
