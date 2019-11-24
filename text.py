@@ -14,7 +14,9 @@ startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quo
                   'Line 2: The description of your home project' \
                   '\n------------------------\n'\
                   '\nAnd remember the more details that you include... the better the estimate you will receive from our connected construction specialists!!\n' \
-                  '\nHeres a text message example:\n' \
+                  '\nExample:' \
+                  '\n------------------------\n'\
+                  '\n------TEXT-MESSAGE-------\n'\
                   '\n------------------------\n'\
                   '1\n' \
                   'PERSONALMESSAGE\n' \
