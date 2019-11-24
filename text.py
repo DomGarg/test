@@ -5,7 +5,7 @@ from twilio.rest import Client
 import userForms
 import requests
 
-clientRequests = {}
+count = 0
 startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quotes for your desired home project is just seconds away!\n' \
                 'Please follow the following format so that we can properly process your message:\n' \
                 '\n------------------------'\
@@ -108,7 +108,7 @@ def sms():
     ##message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
         ##return str(message.sid)
     companiesPresent = 0
-    if(str(number) in clientRequests):
+    if(count & 2 == 1):
         print("HERE: ", original_message_body )
         compare = linkSkills.get(str(original_message_body[0]))
         print("Compare: ", compare)
@@ -129,7 +129,7 @@ def sms():
         clientRequests.update({str(number): sendBaseMessage})
         message = client.messages.create(body=startingMessage, from_='+16475576348', to= number)
         return str(message.sid)
-
+    count += 1
     if companiesPresent == 0:
         message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=lastClientRequest)
 
