@@ -4,7 +4,7 @@
 # Attribution Information: The RenovationApp was created at PAB @UWO campus
 # The core projects were created by Dominic Gargala, Adrian Kalafut, and Elizabeth Lenkic
 
-Companies = {"Painter":[], "Roofer":[], "Welder":[], "Mechanic":[], "Plaster":[], "Carpenter": [], "Drywall": [], "Electrician": [], "Plumber": [], "Taping": [], "Masonry": [], "Tiles":[], "Carpet Installer": [], "Cement & Concrete Finisher": [], "Fencer/Fence Erector": [], "Flooring Installer":[], "HVAC":[], "Insulation": [], "Laborer": [], "Landscaper":[], "Mason":[]}
+Companies = {"Painter":[], "Roofer":[], "Welder":[], "Mechanic":[], "Plaster":[], "Carpentry": [], "Drywall": [], "Electrician": [], "Plumber": [], "Taping": [], "Masonry": [], "Tiles":[], "Carpet Installer": [], "Cement & Concrete Finisher": [], "Fencer/Fence Erector": [], "Flooring Installer":[], "HVAC":[], "Insulation": [], "Laborer": [], "Landscaper":[], "Mason":[]}
 
 
 class Company(object):
