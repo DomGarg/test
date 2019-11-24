@@ -53,9 +53,6 @@ auth_token = '4c4a4cffd5e80692cd6b0f74e1027e1b'
 client = Client(account_sid, auth_token)
 
 
-@app.route('/')
-def index():
-    return "<h1>Welcome to heroku app</h1>"
 
 
 @app.route('/sms', methods=['POST', 'GET'])
