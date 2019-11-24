@@ -7,7 +7,7 @@
 Companies = {"Painter":[], "Roofer":[], "Welder":[], "Mechanic":[], "Plaster":[], "Carpentry": [], "Drywall": [], "Electrician": [], "Plumber": [], "Taping": [], "Masonry": [], "Tiles":[], "Carpet Installer": [], "Cement & Concrete Finisher": [], "Fencer/Fence Erector": [], "Flooring Installer":[], "HVAC":[], "Insulation": [], "Laborer": [], "Landscaper":[], "Mason":[]}
 
 
-class Company(object):
+class Company:
     ##Constructor for Company User form
     ##Will contain all important information about the Company
     ##All companies will be stored in a dictionary outlining there skills (what trades they speicalize in)
