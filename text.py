@@ -55,9 +55,11 @@ def sms():
     message_body = original_message_body.split("\n", 1)
     found = 0
     for i in userForms.Companies:
-        if userForms.Companies.get(i).getPhoneNumber() == message_body:
-            message = client.messages.create(body=original_message_body, from_=i.getPhoneNumber(), to= lastClientRequest)
-            return str(message.sid)
+        tempList = userForms.get(i)
+        for j in tempList:
+            if j.getPhoneNumber() == message_body:
+                message = client.messages.create(body=original_message_body, from_=i.getPhoneNumber(), to= lastClientRequest)
+                return str(message.sid)
 
     sendBaseMessage = 0
     ##then this message is from a client and check if they have already messaged us!
