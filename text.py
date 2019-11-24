@@ -126,7 +126,7 @@ def sms():
         return str(message.sid)
 
     if companiesPresent == 0:
-        message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=lastClientRequest)
+        message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=number)
 
     #resp = MessagingResponse()
     #resp.message('Hello {}, you said: {}'.format("+19056060506", message_body[0]))
