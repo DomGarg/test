@@ -5,7 +5,6 @@ from twilio.rest import Client
 import userForms
 import requests
 
-lastClientRequest = None
 clientRequests = {}
 startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quotes for your desired home project is just seconds away!\n' \
                 'Please follow the following format so that we can properly process your message:\n' \
@@ -76,15 +75,12 @@ def index():
 
     for i in json_response:
         #temp = json_response[i]
-        print(i[0], i[1][1], "+" + i[1][0])
         company = userForms.Company(i[0], i[1][1], "+" + i[1][0], None, None)
         temp = userForms.Companies.get(i[1][1])
         temp.append(company)
         userForms.Companies.update({i[1][1]:temp})
 
     repository = json_response
-    print(repository)  # Python 3.6+
-    print(f'Repository description: {repository[0]}')  # Python 3.6+
     return "<h1>Welcome to heroku app</h1>"
 
 
@@ -95,11 +91,10 @@ def sms():
     original_message_body = request.values.get('Body', None)
     message_body = original_message_body.split("\n", 1)
     found = 0
-    print("delimitter: ", original_message_body)
     ##Company has sent a text message
     for i in userForms.Companies:
-        print("First Loop: ", i)
-        print("elements: ", userForms.Companies.get(i))
+        #print("First Loop: ", i)
+        #print("elements: ", userForms.Companies.get(i))
         temp = userForms.Companies.get(i)
         for j in temp:
             if j.getPhoneNumber() == number:
@@ -114,13 +109,12 @@ def sms():
         ##return str(message.sid)
 
     ##then this message is from a client and check if they have already messaged us!
-    if(number != lastClientRequest):
+    if(not number in clientRequests):
         print("NUMBER: ", number)
         print("ClientRequests: ", clientRequests)
-        lastClientRequest = number
         sendBaseMessage += 1
         clientRequests.update({number: sendBaseMessage})
-        message = client.messages.create(body=startingMessage, from_='+16475576348', to= lastClientRequest)
+        message = client.messages.create(body=startingMessage, from_='+16475576348', to= number)
         return str(message.sid)
 
     compare = linkSkills.get(original_message_body)
@@ -129,7 +123,6 @@ def sms():
     list = userForms.Companies.get(compare)
 
     for j in list:
-        clientRequests.pop(lastClientRequest)
         if j.getSkills() == compare:
             companiesPresent += 1
             message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
