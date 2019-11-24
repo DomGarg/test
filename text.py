@@ -5,17 +5,19 @@ from twilio.rest import Client
 import userForms
 lastClientRequest = None
 clientRequests = {}
-startingMessage = 'Hello and Welcome to renoSMS!!!\n\nReceiving multiple quotes for your desired home project is just seconds away!\n' \
+startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quotes for your desired home project is just seconds away!\n' \
                   'Please follow the following format so that we can properly process your message:\n' \
+                  '---------------------------\n'\
                   '\nLine 1: Select the appropriate number to match the construction sepcialist for your project' \
+                  '\---------------------------\n'\
                   '\nLine 2: The description of your home project' \
                   '\n(And remember the more details that you include... the better the estimate you will receive from our connected construction speicalists!!)\n' \
-                  'Heres an example:\n\n' \
+                  '\nHeres an example:' \
                   '1\n' \
                   'PERSONALMESSAGE\n' \
                   'PERSONALMESSAGE\n' \
-                  'PERSONALMESSAGE\n' \
-                  'Lastly here are the options to select from:\n' \
+                  'PERSONALMESSAGE\n\n' \
+                  'Lastly here are the options to select from for what you enter on line 1:\n\n' \
                   '1. Painter\n' \
                   '2. Roofer\n' \
                   '3. Welder\n' \
