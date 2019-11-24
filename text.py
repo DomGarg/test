@@ -83,15 +83,13 @@ def sms():
     lastClientRequest = None
     compare = linkSkills.get(message_body[0])
 
-    companiesPresent = 1
-    for i in userForms.Companies:
-        companiesPresent = 0
-        tempList = userForms.Companies.get(i)
-        for j in tempList:
-            if j.getSkills() == compare:
-                companiesPresent += 1
-                message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
-                print(message.sid)
+    companiesPresent = 0
+    list = userForms.Companies.get(compare)
+    for j in tempList:
+        if j.getSkills() == compare:
+            companiesPresent += 1
+            message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
+            print(message.sid)
 
     if companiesPresent == 0:
         message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=lastClientRewuest)
