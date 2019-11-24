@@ -9,9 +9,9 @@ startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quo
                   'Please follow the following format so that we can properly process your message:\n' \
                   '\n------------------------'\
                   '\nLine 1: Select the appropriate number to match the construction sepcialist for your project' \
-                  '------------------------\n'\
+                  '\n------------------------\n'\
                   '\nLine 2: The description of your home project' \
-                  '------------------------\n'\
+                  '\n------------------------\n'\
                   '\n(And remember the more details that you include... the better the estimate you will receive from our connected construction speicalists!!)\n' \
                   '\nHeres an example:\n' \
                   '1\n' \
