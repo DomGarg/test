@@ -77,7 +77,7 @@ def index():
     repository = json_response
     print(repository)  # Python 3.6+
     print(f'Repository description: {repository[0]}')  # Python 3.6+
-    return "<h1>Welcome to heroku app</h1><link rel="shortcut icon" href="#">"
+    return "<h1>Welcome to heroku app</h1>"
 
 
 @app.route('/sms', methods=['POST', 'GET'])
