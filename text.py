@@ -106,7 +106,7 @@ def sms():
     ##message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
         ##return str(message.sid)
     companiesPresent = 0
-    if(number in userForms.interactions and  message_body[0].isnum()):
+    if(message_body[0].isnum()):
         print("HERE: ", original_message_body )
         compare = linkSkills.get(str(message_body[0]))
         print("Compare: ", compare)
