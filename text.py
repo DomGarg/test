@@ -91,14 +91,9 @@ def sms():
     print("Original: " ,message_body)
     print("part original: ", message_body[0])
     ##Company has sent a text message
-    for i in userForms.Companies:
-        #print("First Loop: ", i)
-        #print("elements: ", userForms.Companies.get(i))
-        temp = userForms.Companies.get(i)
-        for j in temp:
-            if j.getPhoneNumber() == str(number):
-                message = client.messages.create(body=original_message_body, from_='+16475576348', to= userForms.interactions[-1])
-                return str(message.sid)
+    if number in userForms.listOfAllCompanies:
+        message = client.messages.create(body=original_message_body, from_='+16475576348', to= userForms.interactions[-1])
+        return str(message.sid)
 
 
     ##Message was entered incorrectly by customer
