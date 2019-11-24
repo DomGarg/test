@@ -55,7 +55,7 @@ def sms():
     message_body = original_message_body.split("\n", 1)
     found = 0
     for i in userForms.Companies:
-        tempList = userForms.get(i)
+        tempList = userForms.Companies.get(i)
         for j in tempList:
             if j.getPhoneNumber() == message_body:
                 message = client.messages.create(body=original_message_body, from_=i.getPhoneNumber(), to= lastClientRequest)
@@ -75,9 +75,11 @@ def sms():
     lastClientRequest = None
     compare = linkSkills.get(message_body)
     for i in userForms.Companies:
-        if userForms.Companies.get(i).getSkills() == compare:
-            message = client.messages.create(body=compare, from_='+16475576348', to='+19056060506')
-            print(message.sid)
+        tempList = userForms.Companies.get(i)
+        for j in tempList
+            if j.getSkills() == compare:
+                message = client.messages.create(body=compare, from_='+16475576348', to='+19056060506')
+                print(message.sid)
 
 
     #resp = MessagingResponse()
