@@ -21,6 +21,9 @@ class Company():
         self.phoneNumber = phoneNumber
         self.email = emailAddress
         self.info = companyInfo
+        temp = Companies.get(skills)
+        temp.append(self)
+        Companies.update({skills:temp})
 
     ##Getter method
     ##Returns the name of the Company associated with this object
