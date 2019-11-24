@@ -15,10 +15,12 @@ startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quo
                   '\n------------------------\n'\
                   '\nAnd remember the more details that you include... the better the estimate you will receive from our connected construction specialists!!\n' \
                   '\nHeres a text message example:\n' \
+                  '\n------------------------\n'\
                   '1\n' \
                   'PERSONALMESSAGE\n' \
                   'PERSONALMESSAGE\n' \
-                  'PERSONALMESSAGE\n\n' \
+                  'PERSONALMESSAGE' \
+                  '\n------------------------\n'\
                   'Lastly here are the options you can enter on your first line of text(REMEMBER NUMBERS ONLY!):\n\n' \
                   '1. Painter\n' \
                   '2. Roofer\n' \
