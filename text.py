@@ -107,7 +107,7 @@ def sms():
     ##message = client.messages.create(body="Error: You have entered information incorrectly", from_='+16475576348', to= lastClientRequest)
         ##return str(message.sid)
     companiesPresent = 0
-    if(count & 2 == 1):
+    if(count % 2 == 1):
         print("HERE: ", original_message_body )
         compare = linkSkills.get(str(original_message_body[0]))
         print("Compare: ", compare)
