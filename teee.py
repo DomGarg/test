@@ -20,8 +20,11 @@ json_response = response.json()
 
 for i in json_response:
     #temp = json_response[i]
-    #print(i[0], i[1][1], "+" + i[1][0])
-    userForms.Company(i[0], i[1][1], "+" + i[1][0], None, None)
+    print(i[0], i[1][1], "+" + i[1][0])
+    company = userForms.Company(i[0], i[1][1], "+" + i[1][0], None, None)
+    temp = userForms.Companies.get(i[1][1])
+    temp.append(company)
+    userForms.update({i[1][1]:temp})
 
 repository = json_response
 print(repository)  # Python 3.6+
