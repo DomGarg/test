@@ -18,7 +18,7 @@ startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quo
                   'PERSONALMESSAGE\n' \
                   'PERSONALMESSAGE\n' \
                   'PERSONALMESSAGE\n\n' \
-                  'Lastly here are the options you can enter on your first line of text(ONLY NUMBERS):\n\n' \
+                  'Lastly here are the options you can enter on your first line of text(REMEMBER NUMBERS ONLY!):\n\n' \
                   '1. Painter\n' \
                   '2. Roofer\n' \
                   '3. Welder\n' \
