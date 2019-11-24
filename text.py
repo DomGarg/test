@@ -16,13 +16,13 @@ startingMessage = '\n\nHello and Welcome to renoSMS!!!\n\nReceiving multiple quo
                   '\nAnd remember the more details that you include... the better the estimate you will receive from our connected construction specialists!!\n' \
                   '\nExample:' \
                   '\n------------------------\n'\
-                  '----------TEXT----------------------MESSAGE-------'\
+                  '----------TEXT--------------------------MESSAGE-------'\
                   '\n------------------------\n'\
                   '1\n' \
                   'PERSONALMESSAGE\n' \
                   'PERSONALMESSAGE\n' \
                   'PERSONALMESSAGE' \
-                  '\n\n------------------------\n'\
+                  '\n------------------------\n\n'\
                   'Lastly here are the options you can enter on your first line of text(REMEMBER NUMBERS ONLY!):\n\n' \
                   '1. Painter\n' \
                   '2. Roofer\n' \
@@ -82,13 +82,18 @@ def sms():
 
     lastClientRequest = None
     compare = linkSkills.get(message_body)
+
+    companiesPresent = 0
     for i in userForms.Companies:
         tempList = userForms.Companies.get(i)
         for j in tempList:
             if j.getSkills() == compare:
-                message = client.messages.create(body=compare, from_='+16475576348', to='+19056060506')
+                companiesPresent += 1
+                message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
                 print(message.sid)
 
+    if companiesPresent == 0:
+        message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=number)
 
     #resp = MessagingResponse()
     #resp.message('Hello {}, you said: {}'.format("+19056060506", message_body[0]))
