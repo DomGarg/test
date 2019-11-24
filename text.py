@@ -115,7 +115,7 @@ def sms():
         for j in list:
             if j.getSkills() == compare:
                 companiesPresent += 1
-                message = client.messages.create(body=compare, from_='+16475576348', to=j.getPhoneNumber())
+                message = client.messages.create(body=message_body[1], from_='+16475576348', to=j.getPhoneNumber())
                 print(message.sid)
 
     ##then this message is from a client and check if they have already messaged us!
@@ -124,7 +124,7 @@ def sms():
         print("NUMBER: ", number)
         message = client.messages.create(body=startingMessage, from_='+16475576348', to= number)
         return str(message.sid)
-    
+
     if companiesPresent == 0:
         message = client.messages.create(body="Unfortunately we dont not have any workers within this particular trade", from_='+16475576348', to=lastClientRequest)
 
