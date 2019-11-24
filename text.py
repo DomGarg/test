@@ -3,7 +3,6 @@ from twilio import twiml
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 import userForms
-import requests
 
 
 lastClientRequest = None
@@ -56,27 +55,6 @@ client = Client(account_sid, auth_token)
 
 @app.route('/')
 def index():
-        # Search GitHub's repositories for requests
-    response = requests.get(
-        'https://dgargala.lib.id/notyet@dev/getNumbers/',
-        params={'q': 'requests+language:python'},
-    )
-
-
-    # Inspect some attributes of the `requests` repository
-    json_response = response.json()
-
-    for i in json_response:
-        #temp = json_response[i]
-        print(i[0], i[1][1], "+" + i[1][0])
-        company = userForms.Company(i[0], i[1][1], "+" + i[1][0], None, None)
-        temp = userForms.Companies.get(i[1][1])
-        temp.append(company)
-        userForms.Companies.update({i[1][1]:temp})
-
-    repository = json_response
-    print(repository)  # Python 3.6+
-    print(f'Repository description: {repository[0]}')  # Python 3.6+
     return "<h1>Welcome to heroku app</h1>"
 
 
